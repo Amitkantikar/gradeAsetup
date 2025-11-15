@@ -11,8 +11,8 @@ import config
 # ==============================================================  
 # TELEGRAM CONFIG  
 # ==============================================================  
-TELEGRAM_BOT_TOKEN = config.BOT_TOKEN
-TELEGRAM_CHAT_ID = config.CHAT_ID
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 LOG_FILE = "ath_alert_log.csv"
 
@@ -327,4 +327,5 @@ if __name__ == "__main__":
     send_telegram_alert(summary_msg)
     end = datetime.now()
     print(f"\nDone. Time elapsed: {end - start}\nLogs saved to: {LOG_FILE}")
+
 
