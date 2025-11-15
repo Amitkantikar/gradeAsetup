@@ -1,0 +1,35 @@
+name: ATH Scanner (Every 15 Minutes, Market Hours IST)
+
+on:
+  schedule:
+    # Runs every 15 minutes from 03:45 UTC to 10:00 UTC (09:15 – 15:30 IST)
+    - cron: "*/15 3-10 * * 1-5"  
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-scanner:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install yfinance pandas numpy requests
+
+      - name: Run ATH breakout scanner
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: |
+          python your_script_name.py
