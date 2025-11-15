@@ -17,7 +17,7 @@ TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 LOG_FILE = "ath_alert_log.csv"
 
 # User-defined parameters
-THRESHOLD_PCT = 2.0               # Percent below ATH
+THRESHOLD_PCT = 5.0               # Percent below ATH
 MIN_CANDLES_SINCE_ATH = 10        # Minimum candles since ATH
 
 # ==============================================================
@@ -327,5 +327,6 @@ if __name__ == "__main__":
     send_telegram_alert(summary_msg)
     end = datetime.now()
     print(f"\nDone. Time elapsed: {end - start}\nLogs saved to: {LOG_FILE}")
+
 
 
