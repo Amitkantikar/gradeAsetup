@@ -2,8 +2,7 @@ name: ATH Scanner (Every 15 Minutes, Market Hours IST)
 
 on:
   schedule:
-    # Runs every 15 minutes from 03:45 UTC to 10:00 UTC (09:15 – 15:30 IST)
-    - cron: "*/15 3-10 * * 1-5"  
+    - cron: "*/15 3-9 * * 1-5"
   workflow_dispatch:
 
 permissions:
@@ -24,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install yfinance pandas numpy requests
 
       - name: Run ATH breakout scanner
