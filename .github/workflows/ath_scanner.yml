@@ -1,7 +1,7 @@
 name: ATH Scanner (Every 15 Minutes, Market Hours IST)
 
 on:
-  schedule:
+  #schedule:
     - cron: "*/15 3-9 * * 1-5"
   workflow_dispatch:
 
